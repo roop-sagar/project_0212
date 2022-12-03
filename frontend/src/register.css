@@ -1,0 +1,66 @@
+.formContainer{
+    background-color: cornflowerblue;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formWrapper{
+    background-color: whitesmoke;
+    padding: 15px 30px 10px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction:column ;
+    gap:15px
+}
+.formWrapper form{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.logo{
+    color:rgb(2, 8, 14);
+    font-weight: bold;
+    font-size: 20px;
+}
+.register{
+    color: rgb(97, 192, 236);
+}
+input{
+    border: none;
+    background-color: whitesmoke;
+    border-bottom: 1px solid blue;
+}
+.file{
+    display: none;
+}
+label{
+    display: flex;
+    align-items: center;
+    
+}
+::placeholder{
+    color: rgb(200, 199, 199);
+}
+
+label img{
+    height: 32px;
+    width: 32px;
+}
+.profilePicLabel{
+    color:rgb(200, 199, 199); 
+}
+.signup{
+    background-color: rgb(152, 152, 201);
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+    border-radius: 15px;
+}
+.loginPara{
+    color:rgb(56, 56, 56);
+}
