@@ -1,5 +1,6 @@
 import React from 'react';
 import "../register.css"
+import add from "../images/addProfilepic.png"
 const Register= () => {
     return(
         <div>
