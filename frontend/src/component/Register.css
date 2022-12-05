@@ -65,6 +65,11 @@ label img{
     color:rgb(56, 56, 56);
 }
 
+/* removing underlines from Link/anchor tag in login/register/home */
+a{
+    text-decoration: none;
+}
+
 /* home.js */
 .backGround{
     background-image: url("https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
