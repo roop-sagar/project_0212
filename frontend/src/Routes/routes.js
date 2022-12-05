@@ -1,6 +1,6 @@
-import Login from '../components/Login';
-import Register from '../components/Register';
-import Home from '../components/Home';
+import Login from '../component/Login';
+import Register from '../component/Register';
+import Home from '../component/Home';
 import {Routes,Route} from "react-router-dom";
 
 function Routing() {
@@ -15,5 +15,4 @@ function Routing() {
     
   );
 }
-
 export default Routing;
