@@ -1,10 +1,12 @@
 import React from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Login = () => {
   return (
-    <div>
+      <div>
+      <Navbar/>
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">CHITchat</span>

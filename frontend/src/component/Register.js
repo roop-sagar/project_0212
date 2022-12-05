@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import add from "../images/addProfilepic.png";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Register() {
   const [data, setData] = useState({
@@ -21,6 +22,7 @@ export default function Register() {
   };
   return (
     <div>
+    <Navbar/> 
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">CHITchat</span>
