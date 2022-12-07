@@ -9,13 +9,9 @@
 
 .navbarContainer a{
     text-decoration: none;
-    
-    
 }
 .navMenu{
-    display: flex;
-    
-    
+    display: flex;  
 }
 .navMenu li{
     padding: 0 1em;

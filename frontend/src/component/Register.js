@@ -9,17 +9,22 @@ export default function Register() {
     username: "",
     email: "",
     password: "",
+    
   });
   const { username, email, password } = data;
 
   const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value  });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(data);
   };
+
+  // fileUpload
+  const[file,setFile]=useState();
+  console.log(file);  
   return (
     <div>
     <Navbar/> 
@@ -49,11 +54,20 @@ export default function Register() {
               value={password}
               name = 'password'
             />
-            <input className="file" id="file" type="file" />
+
+            <input 
+              className="file" 
+              id="file" 
+              type="file" 
+              accept="image/png, image/jpeg, image/jpg"
+              onChange={(e)=>setFile(e.target.files)} 
+            />
             <label htmlFor="file">
               <img src={add} alt="addProfilePic" />
+              
               <span className="profilePicLabel">Choose a profile pic</span>
             </label>
+
             <button type="submit" className="signup">Sign Up</button>
           </form>
 

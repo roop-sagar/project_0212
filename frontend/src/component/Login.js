@@ -1,9 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Login = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = data;
+  
+  const changeHandler = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+  
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(data);
+  };
+
   return (
       <div>
       <Navbar/>
@@ -11,9 +26,21 @@ const Login = () => {
         <div className="formWrapper">
           <span className="logo">CHITchat</span>
           <span className="register">Login</span>
-          <form>
-            <input type={"email"} placeholder="e-mail" />
-            <input type={"password"} placeholder="Password" />
+          <form onSubmit={submitHandler}>
+            <input 
+            type={"email"} 
+            onChange={changeHandler}
+            placeholder="e-mail" 
+            value={email}
+            name = 'email'
+            />
+
+            <input type={"password"} 
+            onChange={changeHandler}
+            placeholder="Password" 
+            value={password}
+            name = 'password'
+            />
             <button className="signup">Login</button>
           </form>
 
@@ -29,3 +56,5 @@ const Login = () => {
 };
 
 export default Login;
+
+
