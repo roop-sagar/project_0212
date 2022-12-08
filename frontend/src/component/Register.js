@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Register.css";
-import add from "../images/addProfilepic.png";
+// import add from "../images/addProfilepic.png";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-
+import axios from "axios";
 export default function Register() {
   const [data, setData] = useState({
     username: "",
@@ -17,14 +17,27 @@ export default function Register() {
     setData({ ...data, [e.target.name]: e.target.value  });
   };
 
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(data);
+    axios
+      .post("http://localhost:5000/register", {
+        username:username,
+        email:email,
+        password:password
+      })
+      .then((res) => alert(res.data.message));
+    setData({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   // fileUpload
-  const[file,setFile]=useState();
-  console.log(file);  
+  // const[file,setFile]=useState();
+  
   return (
     <div>
     <Navbar/> 
@@ -55,7 +68,7 @@ export default function Register() {
               name = 'password'
             />
 
-            <input 
+            {/* <input 
               className="file" 
               id="file" 
               type="file" 
@@ -66,7 +79,7 @@ export default function Register() {
               <img src={add} alt="addProfilePic" />
               
               <span className="profilePicLabel">Choose a profile pic</span>
-            </label>
+            </label> */}
 
             <button type="submit" className="signup">Sign Up</button>
           </form>

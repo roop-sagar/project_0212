@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const RegisteredUser = mongoose.Schema({
+const RegisterSchema = new mongoose.Schema({
     username:{
         type:String,
         required: true
@@ -16,8 +16,6 @@ const RegisteredUser = mongoose.Schema({
     }
 });
 
-const Registered = mongoose.model('Registered',RegisteredUser);
 
-module.exports = {
-    Registered
-}
+
+module.exports = mongoose.model('ChitchatUser',RegisterSchema);
