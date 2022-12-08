@@ -47,7 +47,7 @@ const Login = () => {
           <p className="signinPara">
             Don't have an account already?
             <br />
-            <Link to="/register">Sign Up</Link> now.
+            <Link to="/register"><b>Sign Up</b></Link> now.
           </p>
         </div>
       </div>
