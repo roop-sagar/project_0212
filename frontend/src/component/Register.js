@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./Register.css";
 // import add from "../images/addProfilepic.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+
 export default function Register() {
+  let navigate = useNavigate();
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -33,6 +35,7 @@ export default function Register() {
       email: "",
       password: "",
     });
+    navigate('/login');
   };
 
   // fileUpload

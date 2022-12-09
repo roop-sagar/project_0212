@@ -27,6 +27,22 @@ app.post('/register', async(req,res)=>{
         message:'Registered Successfully'
     });
 });
+
+app.post('login', async (req, res) => {
+    try {
+        const {email, password} = req.body;
+        let exist = Registered.findOne({email});
+        if(!exist) {
+            return res.send('No User Found');
+        }
+        if(exist.password !== password) {
+            return res.send('Password is incorrect');
+        }
+    } catch (error) {
+        console.log(error);
+        return res.send('error in login post');
+    }
+})
 app.listen(PORT,()=>{
     console.log('listening on port '+ PORT);
 })
