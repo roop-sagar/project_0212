@@ -23,14 +23,14 @@ const Navbar = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/Login">
+                <Link to="/login">
                 {/* <button className='loginButton'> */}
                 Login
                 {/* </button> */}
                 </Link>
             </li>
             <li>
-                <Link to="/Register">
+                <Link to="/register">
                 {/* <button> */}
                 Register
                 {/* </button> */}

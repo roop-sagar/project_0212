@@ -1,9 +1,12 @@
 import React,{useState} from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import Navbar from "./Navbar";
+import axios from 'axios';
+
 
 const Login = () => {
+  let navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,6 +20,12 @@ const Login = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(data);
+    axios.post('http://localhost:5000/login',data).then(res =>{
+      alert(res.data)
+      if(res.data === 'success'){
+        navigate('/profile');
+      } else {alert('Invalid details')}
+    })
   };
 
   return (

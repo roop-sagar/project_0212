@@ -28,15 +28,19 @@ app.post('/register', async(req,res)=>{
     });
 });
 
-app.post('login', async (req, res) => {
+app.post('/login', async (req, res) => {
     try {
         const {email, password} = req.body;
-        let exist = Registered.findOne({email});
+        let exist = await Registered.findOne({email});
+        console.log(exist.email);
         if(!exist) {
             return res.send('No User Found');
         }
         if(exist.password !== password) {
             return res.send('Password is incorrect');
+        }
+        if(exist){
+            return res.send('success');
         }
     } catch (error) {
         console.log(error);
