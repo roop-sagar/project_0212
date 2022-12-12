@@ -1,0 +1,53 @@
+.chat{
+    display: flex;
+    
+    flex-direction: column;
+    background-color: rgba(0, 0, 255, 0.08);
+}
+.chatInfo{
+    display: flex;
+    align-items: center;
+    background-color: blanchedalmond;
+    justify-content:space-between;
+    height: 30px;
+}
+
+.addUser{
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+    
+}
+.userName{
+ margin-left:5px ;   
+}
+/* input.js */
+.input{
+ background-color: azure;
+ border: none;
+ display: flex;
+}
+.input input{
+    height: 70px;  
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.send{
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    margin-right: 5px;
+    
+}
+label img{
+    margin-left: 5px;
+    background-color: transparent;
+}
+
+.send button{
+    background-color: #8da4f1;
+    color: white;
+    height: 70%;
+    width: 100%;
+}

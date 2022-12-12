@@ -1,0 +1,24 @@
+.dashboard{
+    background-color: rgba(10, 121, 144, 0.886);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    border: 1.5px solid #4400ff;
+    border-radius: 12px;
+    height: 60%;
+    width: 80%;
+    display: flex;
+    overflow: hidden;
+}
+
+.dashSidebar{
+    flex: 1;
+    border-right: 1.5px solid #4400ff;
+    background-color: #81acf6;
+}
+.chat{
+    flex:2
+}

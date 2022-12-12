@@ -1,0 +1,8 @@
+.messageContent p{
+    font-size: 15px !important;
+    
+}
+.messageContent{
+    padding: 10px;
+    height: calc(100% - 100px)
+}
