@@ -7,9 +7,9 @@ import Dashboard from './Dashboard';
 const Home= () => {
     return(
         <div>
-            {/* <Navbar/>
-            <img className='bgimage' src={homePage} alt=""/>
-             */}
+            {/* <Navbar/> */}
+            {/* <img className='bgimage' src={homePage} alt="" /> */}
+            
              <Dashboard/>
         </div>
     );
