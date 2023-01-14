@@ -1,0 +1,23 @@
+.all{
+margin: auto;
+padding: 10px;
+}
+
+.friend{
+padding: 10px;
+display: flex;
+width: 200px;
+justify-content: space-between;
+color: white;
+}
+
+.friend button{
+    border-radius: 10%;
+    border: none;
+}
+.friend button:hover{
+    background-color: rgb(102, 240, 70) ;
+}
+.search{
+    width: 200,
+}

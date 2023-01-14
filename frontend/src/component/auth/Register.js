@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Register.css";
-// import add from "../images/addProfilepic.png";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
@@ -11,12 +10,12 @@ export default function Register() {
     username: "",
     email: "",
     password: "",
-    
+
   });
   const { username, email, password } = data;
 
   const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value  });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
 
@@ -25,25 +24,29 @@ export default function Register() {
     console.log(data);
     axios
       .post("http://localhost:5000/register", {
-        username:username,
-        email:email,
-        password:password
+        username: username,
+        email: email,
+        password: password
       })
-      .then((res) => alert(res.data.message));
-    setData({
-      username: "",
-      email: "",
-      password: "",
-    });
-    navigate('/login');
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === 'ok') {
+          alert(res.data.message);
+          setData({
+            username: "",
+            email: "",
+            password: "",
+          });
+          navigate('/login');
+        } else {
+          alert(res.data.message)
+        }
+      })
   };
 
-  // fileUpload
-  // const[file,setFile]=useState();
-  
   return (
     <div>
-    <Navbar/> 
+      <Navbar />
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">CHITchat</span>
@@ -54,36 +57,22 @@ export default function Register() {
               onChange={changeHandler}
               placeholder="Name"
               value={username}
-              name = 'username'
+              name='username'
             />
             <input
               type="email"
               onChange={changeHandler}
               placeholder="E-mail"
               value={email}
-              name = 'email'
+              name='email'
             />
             <input
               type="password"
               onChange={changeHandler}
               placeholder="Password"
               value={password}
-              name = 'password'
+              name='password'
             />
-
-            {/* <input 
-              className="file" 
-              id="file" 
-              type="file" 
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={(e)=>setFile(e.target.files)} 
-            />
-            <label htmlFor="file">
-              <img src={add} alt="addProfilePic" />
-              
-              <span className="profilePicLabel">Choose a profile pic</span>
-            </label> */}
-
             <button type="submit" className="signup">Sign Up</button>
           </form>
 
