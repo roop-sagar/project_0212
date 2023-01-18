@@ -4,24 +4,34 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-color: rgb(103, 103, 108);
 }
 
 .chat .messages{
     /* border: 1px solid #000; */
     margin: 10px;
+    margin-right: 0;
     color: #fff;
+    overflow-y: scroll;
 }
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 .text-input{
-    margin: 10px;
+    padding: 10px;
+    background-color: rgb(129, 129, 132);
 }
 
-.chat .text-input input{
+.chat .text-input textarea{
     width: 98%;
     height: 40px;
     padding: 2px 5px;
-    line-height: 100%;
-    font-size: 25px;
+    font-size: 28px;
     border-radius: 10px;
+    resize: none;
 }
 
 .chat .text-input button{
@@ -40,10 +50,12 @@
 
 .chat .msg{
     width: max-content;
+    max-width: 90%;
     border: 1px solid black;
     background-color: rgb(57, 57, 57);
     margin: 5px 2px;
     padding: 5px;
     border-radius: 5px;
     font-size: medium;
+    
 }

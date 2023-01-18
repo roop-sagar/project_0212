@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/Chat.css';
 import { Col, Row } from 'antd';
@@ -13,6 +13,11 @@ const Chat = () => {
 
     let navigate = useNavigate();
 
+    const messagesEndRef = useRef(null);
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior:'auto' });
+      };
+    useEffect(scrollToBottom, [messages]);
     useEffect(() => {
         let path = window.location.pathname;
         let userData = JSON.parse(sessionStorage.getItem('user'));
@@ -27,6 +32,7 @@ const Chat = () => {
         if (token) {
             getMessages();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toId])
     const send = (to) => {
         axios.post('http://localhost:5000/sendMessage', {
@@ -38,7 +44,6 @@ const Chat = () => {
                 'token': token
             }
         }).then(res => {
-            console.log(res.data);
             setInputValue('');
             getMessages();
         })
@@ -62,6 +67,10 @@ const Chat = () => {
         })
     }
 
+    const keyDown =(e,id) => {
+        if(e.key === 'Enter') send(id)
+    }
+
     return (
         <div className="chat" key={toId[2]}>
             <div className='messages'>
@@ -75,13 +84,14 @@ const Chat = () => {
                     return (
                         <div key={index} className='msg' style={msgStyle}>
                             {elem.message}
-                        </div>
+                        </div>                      
                     )
                 })}
+                <div ref={messagesEndRef} />
             </div>
             <div className='text-input'>
                 <Row justify="space-around">
-                    <Col span={20}><input type='text' value={inputValue} onChange={((e) => setInputValue(e.target.value))} /></Col>
+                    <Col span={20}><textarea autoFocus rows='1' type='text' onKeyDown={(e)=>keyDown(e,toId[2])} value={inputValue} placeholder='Send message...' onChange={((e) => setInputValue(e.target.value))} /></Col>
                     <Col span={4}><button onClick={() => send(toId[2])}>Send</button></Col>
                 </Row>
             </div>

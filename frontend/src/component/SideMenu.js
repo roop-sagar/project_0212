@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge } from 'antd';
 import './css/sidemenu.css';
 
 const SideMenu = () => {
-    const [id, setId] = useState('');
+    const [currentUser, setCurrentUser] = useState('');
     const [friends, setFriends] = useState([]);
     let navigate = useNavigate();
 
@@ -28,18 +26,15 @@ const SideMenu = () => {
     }, []);
 
     const click = (key) => {
-        setId(key)
+        setCurrentUser(key)
         navigate(`/dashboard/${key}`)
     };
 
-    const select = (key) => {
-        // navigate(`/dashboard/${key.key}`)
-    }
     return (
         <>
             {friends.map((elem, index) => {
                 return (
-                    <div key={elem.key} className='friend-list' onClick={()=>click(elem.key)}>
+                    <div key={elem.key} className={elem.key === currentUser ? 'active-friend' : 'friend-list'} onClick={()=>click(elem.key)}>
                         <span className="avatar-item">
                             <Badge count={elem.unread}>
                                 <Avatar shape="circle" icon={elem.label[0]} />

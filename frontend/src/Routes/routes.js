@@ -6,7 +6,6 @@ import Profile from './../component/Profile';
 import Addfriend from '../component/Addfriend';
 import Dashboard from '../component/Dashboard';
 import Chat from '../component/Chat';
-import SideMenu from '../component/SideMenu';
 
 function Routing() {
   return (

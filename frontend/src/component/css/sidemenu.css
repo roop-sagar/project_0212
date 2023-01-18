@@ -4,11 +4,18 @@
     color: white;
     cursor: pointer;
 }
+.active-friend{
+    padding: 5px;
+    margin: 5px auto;
+    color: white;
+    cursor: pointer;
+    background-color: #1677ff;
+}
 .friend-name{
     display: inline-block;
     /* width: 100%; */
     height: 100%;
 }
 .friend-list:hover{
-    background-color: rgb(90, 90, 245);
+    background-color: #1677ff;
 }

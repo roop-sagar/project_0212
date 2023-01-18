@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import HeaderComponent from './Header';
 import { Layout } from 'antd';
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Dashboard = () => {
   let navigate = useNavigate();
   const[userId,setUserId] = useState('');
  
-  useEffect(() => {
+  useMemo(() => {
     let token = localStorage.getItem('token');
     axios.get('http://localhost:5000/profile', {
       headers: {

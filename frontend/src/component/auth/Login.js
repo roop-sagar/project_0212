@@ -32,7 +32,8 @@ const Login = () => {
       if (res.data.status === 'ok') {
         localStorage.setItem('token', res.data.token);
         navigate('/dashboard');
-        window.location.reload(false);
+        // navigate(0)
+        // window.location.reload(false);
       } else {
         alert(res.data.message);
         localStorage.clear();
