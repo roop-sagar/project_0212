@@ -10,13 +10,8 @@ const Addfriend = () => {
     const [nonFriends, setNonFriends] = useState([]);
 
     useEffect(() => {
-        let token = localStorage.getItem('token');
         let userData = JSON.parse(sessionStorage.getItem('user'));
-        axios.post('http://localhost:5000/getNonFriends', { userId: userData._id }, {
-            headers: {
-                'token': token
-            }
-        }).then(res => {
+        axios.post('http://localhost:5000/getNonFriends', { userId: userData._id }).then(res => {
             let resData = [];
             resData = [...res.data.nonFriends];
             resData.forEach((elem) => {
@@ -30,16 +25,11 @@ const Addfriend = () => {
 
 
     const addFriend = (friendId) => {
-        let token = localStorage.getItem('token');
         let userData = sessionStorage.getItem('user');
         let userId = JSON.parse(userData)._id;
         axios.post('http://localhost:5000/addFriend', {
             userId: userId,
             friendId: friendId
-        }, {
-            headers: {
-                'token': token
-            }
         }).then(res => {
             sessionStorage.setItem('user', JSON.stringify(res.data.user))
         })

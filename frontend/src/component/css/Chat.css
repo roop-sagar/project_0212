@@ -32,6 +32,7 @@
     font-size: 28px;
     border-radius: 10px;
     resize: none;
+    white-space: pre-wrap;
 }
 
 .chat .text-input button{

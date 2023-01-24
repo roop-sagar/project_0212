@@ -15,7 +15,6 @@ const Login = () => {
     }
   }, [navigate])
 
-
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -32,8 +31,6 @@ const Login = () => {
       if (res.data.status === 'ok') {
         localStorage.setItem('token', res.data.token);
         navigate('/dashboard');
-        // navigate(0)
-        // window.location.reload(false);
       } else {
         alert(res.data.message);
         localStorage.clear();
@@ -78,5 +75,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

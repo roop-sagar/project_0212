@@ -11,13 +11,8 @@ const SideMenu = () => {
 
     useEffect(() => {
         let resData = [];
-        let token = localStorage.getItem('token');
         let userData = JSON.parse(sessionStorage.getItem('user'));
-        axios.post('http://localhost:5000/getFriends', { userId: userData._id }, {
-            headers: {
-                'token': token
-            }
-        }).then(res => {
+        axios.post('http://localhost:5000/getFriends', { userId: userData._id }).then(res => {
             resData = [...res.data.friends];
             resData.forEach(element => {
                 setFriends(friend => [...friend, { key: element._id, label: element.username, unread:element.unread }])

@@ -9,7 +9,6 @@ const Chat = () => {
     const [fromId, setFromId] = useState([]);
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const [token, setToken] = useState('');
 
     let navigate = useNavigate();
 
@@ -21,17 +20,13 @@ const Chat = () => {
     useEffect(() => {
         let path = window.location.pathname;
         let userData = JSON.parse(sessionStorage.getItem('user'));
-        let token = localStorage.getItem('token');
         setFromId(userData._id)
         setToId(path.split('/'));
-        setToken(token)
         navigate(path);
     }, [navigate]);
 
     useEffect(() => {
-        if (token) {
             getMessages();
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toId])
     const send = (to) => {
@@ -39,10 +34,6 @@ const Chat = () => {
             from: fromId,
             to: to,
             message: inputValue
-        }, {
-            headers: {
-                'token': token
-            }
         }).then(res => {
             setInputValue('');
             getMessages();
@@ -53,10 +44,6 @@ const Chat = () => {
         axios.post('http://localhost:5000/getMessages', {
             from: fromId,
             to: toId[2]
-        }, {
-            headers: {
-                'token': token
-            }
         }).then(res => {
             let data = [];
             setMessages([]);
