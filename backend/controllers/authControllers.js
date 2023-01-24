@@ -11,7 +11,6 @@ module.exports.signup = async (req,res) => {
     try {
         const { username, email, password } = req.body;
         let hasedPassword = await bcrypt.hash(password, 10);
-        console.log('hash=' + hasedPassword);
         await Registered.create({
             username,
             email,
