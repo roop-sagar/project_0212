@@ -23,7 +23,7 @@ export default function Register() {
     e.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:5000/register", {
+      .post("/register", {
         username: username,
         email: email,
         password: password

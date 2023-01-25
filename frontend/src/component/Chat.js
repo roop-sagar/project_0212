@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './css/Chat.css';
 import { Col, Row } from 'antd';
 import axios from 'axios';
+// import useWebSocket from 'react-use-websocket';
+// const WS_URL = 'ws://127.0.0.1:5000/';
 
 const Chat = () => {
     const [toId, setToId] = useState([]);
@@ -12,15 +14,29 @@ const Chat = () => {
 
     let navigate = useNavigate();
 
+    // const {sendMessage} = useWebSocket(WS_URL,{
+    //     onOpen: () => {
+    //         console.log('webSocket connection established');
+    //     },
+    //     onClose: () => {
+    //         console.log('websocket connection closed');
+    //     },
+    //     share: true,
+    //     filter: () => false,
+    //     retryOnError: true,
+    //     shouldReconnect: () => true
+    // })
+
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior:'auto' });
       };
     useEffect(scrollToBottom, [messages]);
+
     useEffect(() => {
         let path = window.location.pathname;
         let userData = JSON.parse(sessionStorage.getItem('user'));
-        setFromId(userData._id)
+        setFromId(userData._id);
         setToId(path.split('/'));
         navigate(path);
     }, [navigate]);
@@ -29,8 +45,9 @@ const Chat = () => {
             getMessages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toId])
+
     const send = (to) => {
-        axios.post('http://localhost:5000/sendMessage', {
+        axios.post('/sendMessage', {
             from: fromId,
             to: to,
             message: inputValue
@@ -41,7 +58,7 @@ const Chat = () => {
     }
 
     const getMessages = () => {
-        axios.post('http://localhost:5000/getMessages', {
+        axios.post('/getMessages', {
             from: fromId,
             to: toId[2]
         }).then(res => {
@@ -55,7 +72,9 @@ const Chat = () => {
     }
 
     const keyDown =(e,id) => {
-        if(e.key === 'Enter') send(id)
+        console.log(e);
+        // if(e.key === 'Enter') send(id)
+        // if(e.key === 'Enter') send(id)
     }
 
     return (

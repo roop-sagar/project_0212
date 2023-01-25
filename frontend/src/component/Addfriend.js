@@ -11,7 +11,7 @@ const Addfriend = () => {
 
     useEffect(() => {
         let userData = JSON.parse(sessionStorage.getItem('user'));
-        axios.post('http://localhost:5000/getNonFriends', { userId: userData._id }).then(res => {
+        axios.post('/getNonFriends', { userId: userData._id }).then(res => {
             let resData = [];
             resData = [...res.data.nonFriends];
             resData.forEach((elem) => {
@@ -27,7 +27,7 @@ const Addfriend = () => {
     const addFriend = (friendId) => {
         let userData = sessionStorage.getItem('user');
         let userId = JSON.parse(userData)._id;
-        axios.post('http://localhost:5000/addFriend', {
+        axios.post('/addFriend', {
             userId: userId,
             friendId: friendId
         }).then(res => {

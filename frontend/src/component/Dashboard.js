@@ -14,7 +14,7 @@ const Dashboard = () => {
   const[userId,setUserId] = useState('');
  
   useMemo(() => {
-    axios.get('http://localhost:5000/profile').then(res => {
+    axios.get('/profile').then(res => {
       if(res.data.status === 'ok'){
         sessionStorage.setItem('user', JSON.stringify(res.data.user));
         setUserId(res.data.user._id);

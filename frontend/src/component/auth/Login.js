@@ -27,7 +27,7 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/login', data).then(res => {
+    axios.post('/login', data).then(res => {
       if (res.data.status === 'ok') {
         localStorage.setItem('token', res.data.token);
         navigate('/dashboard');
