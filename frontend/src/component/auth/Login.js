@@ -31,6 +31,7 @@ const Login = () => {
       if (res.data.status === 'ok') {
         localStorage.setItem('token', res.data.token);
         navigate('/dashboard');
+        navigate(0);
       } else {
         alert(res.data.message);
         localStorage.clear();

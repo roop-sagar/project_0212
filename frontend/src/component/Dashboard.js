@@ -25,7 +25,7 @@ const Dashboard = () => {
         alert(res.data.message);
       }
     })
-  },[navigate]);
+  },[]);
   
 
   return (

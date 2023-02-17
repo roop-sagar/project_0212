@@ -2,8 +2,8 @@ const Registered = require('../models/register-model');
 
 module.exports.getFriends = async (req,res) =>{
     try {
-        let {userId} = req.body;
-        const user = await Registered.findOne({_id: userId});
+        // let {userId} = req.body;
+        const user = await Registered.findOne({_id: id});
         const friends = await Registered.find({_id:user.friends},{"username":1});
         return res.json({ status: 'ok',friends: friends});
     } catch (error) {
